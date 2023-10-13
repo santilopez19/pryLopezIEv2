@@ -157,9 +157,7 @@
             this.tvwProveedores.Name = "tvwProveedores";
             this.tvwProveedores.Size = new System.Drawing.Size(240, 190);
             this.tvwProveedores.TabIndex = 13;
-            this.tvwProveedores.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvwProveedores_AfterSelect);
             this.tvwProveedores.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvwProveedores_NodeMouseClick);
-            this.tvwProveedores.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tvwProveedores_MouseClick);
             // 
             // gpbIndicacion
             // 

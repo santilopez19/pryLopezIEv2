@@ -399,15 +399,5 @@ namespace pryLopezIE
 
             txtModificarNumero.Text = numGuia.ToString();
         }
-
-        private void tvwProveedores_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-
-        }
-
-        private void tvwProveedores_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
     }
 }

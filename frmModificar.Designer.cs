@@ -29,7 +29,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmModificar));
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.BackColor = System.Drawing.Color.Red;
+            this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrar.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.ForeColor = System.Drawing.Color.White;
+            this.btnCerrar.Location = new System.Drawing.Point(1045, 12);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(40, 37);
+            this.btnCerrar.TabIndex = 9;
+            this.btnCerrar.Text = "X";
+            this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // frmModificar
             // 
@@ -37,6 +52,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MidnightBlue;
             this.ClientSize = new System.Drawing.Size(1097, 634);
+            this.Controls.Add(this.btnCerrar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmModificar";
@@ -47,5 +63,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnCerrar;
     }
 }

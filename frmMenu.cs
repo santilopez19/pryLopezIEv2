@@ -16,5 +16,18 @@ namespace pryLopezIE
         {
             InitializeComponent();
         }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void listaDeProveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            frmProveedores P = new frmProveedores();
+            this.Hide();
+            P.Show();
+        }
     }
 }

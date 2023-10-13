@@ -36,8 +36,8 @@
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.pctLogo = new System.Windows.Forms.PictureBox();
-            this.btnCerrar = new System.Windows.Forms.Button();
             this.btnRegistrarme = new System.Windows.Forms.Button();
+            this.btnCerrar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +65,8 @@
             // 
             // btnInisiarSesion
             // 
-            this.btnInisiarSesion.BackColor = System.Drawing.Color.Gray;
+            this.btnInisiarSesion.BackColor = System.Drawing.Color.DimGray;
+            this.btnInisiarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInisiarSesion.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInisiarSesion.ForeColor = System.Drawing.Color.White;
             this.btnInisiarSesion.Location = new System.Drawing.Point(688, 275);
@@ -78,7 +79,7 @@
             // 
             // btnOlvide
             // 
-            this.btnOlvide.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnOlvide.BackColor = System.Drawing.Color.LightSlateGray;
             this.btnOlvide.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
             this.btnOlvide.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnOlvide.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -92,8 +93,7 @@
             // 
             // txtUsuario
             // 
-            this.txtUsuario.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUsuario.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.txtUsuario.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.ForeColor = System.Drawing.Color.White;
             this.txtUsuario.Location = new System.Drawing.Point(658, 176);
@@ -103,8 +103,7 @@
             // 
             // txtContraseña
             // 
-            this.txtContraseña.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.txtContraseña.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtContraseña.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.txtContraseña.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContraseña.ForeColor = System.Drawing.Color.White;
             this.txtContraseña.Location = new System.Drawing.Point(658, 224);
@@ -122,21 +121,9 @@
             this.pctLogo.TabIndex = 6;
             this.pctLogo.TabStop = false;
             // 
-            // btnCerrar
-            // 
-            this.btnCerrar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnCerrar.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.ForeColor = System.Drawing.Color.Red;
-            this.btnCerrar.Location = new System.Drawing.Point(989, 12);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(96, 37);
-            this.btnCerrar.TabIndex = 7;
-            this.btnCerrar.Text = "CERRAR";
-            this.btnCerrar.UseVisualStyleBackColor = false;
-            // 
             // btnRegistrarme
             // 
-            this.btnRegistrarme.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnRegistrarme.BackColor = System.Drawing.Color.LightSlateGray;
             this.btnRegistrarme.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
             this.btnRegistrarme.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRegistrarme.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -148,14 +135,28 @@
             this.btnRegistrarme.Text = "Registrarme";
             this.btnRegistrarme.UseVisualStyleBackColor = false;
             // 
+            // btnCerrar
+            // 
+            this.btnCerrar.BackColor = System.Drawing.Color.Red;
+            this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrar.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.ForeColor = System.Drawing.Color.White;
+            this.btnCerrar.Location = new System.Drawing.Point(1045, 12);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(40, 37);
+            this.btnCerrar.TabIndex = 9;
+            this.btnCerrar.Text = "X";
+            this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
             // frmLogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.MidnightBlue;
+            this.BackColor = System.Drawing.Color.LightSlateGray;
             this.ClientSize = new System.Drawing.Size(1097, 634);
-            this.Controls.Add(this.btnRegistrarme);
             this.Controls.Add(this.btnCerrar);
+            this.Controls.Add(this.btnRegistrarme);
             this.Controls.Add(this.pctLogo);
             this.Controls.Add(this.txtContraseña);
             this.Controls.Add(this.txtUsuario);
@@ -183,7 +184,7 @@
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.TextBox txtContraseña;
         private System.Windows.Forms.PictureBox pctLogo;
-        private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnRegistrarme;
+        private System.Windows.Forms.Button btnCerrar;
     }
 }

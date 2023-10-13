@@ -23,5 +23,10 @@ namespace pryLopezIE
             this.Hide();
             M.Show();
         }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

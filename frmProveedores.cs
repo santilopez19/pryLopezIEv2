@@ -26,7 +26,7 @@ namespace pryLopezIE
 
 
             //Crea un objeto DirectoryInfo que apunta a la carpeta.
-            DirectoryInfo info = new DirectoryInfo(@"../../bin\Debug");
+            DirectoryInfo info = new DirectoryInfo(@"../../bin/Debug");
 
             //Verifica si la carpeta especificada en info realmente existe en el sistema de archivos.
             if (info.Exists)
@@ -111,11 +111,7 @@ namespace pryLopezIE
                     //Se crea un arreglo de objetos ListViewSubItem llamado subItems que contiene información adicional para el elemento del ListView.En este caso, se agrega un subelemento con la etiqueta "Directory" y la fecha de último acceso del subdirectorio.
                     subItems = new ListViewItem.ListViewSubItem[]
 
-                        {new ListViewItem.ListViewSubItem(item, "Directory"),
-
-             new ListViewItem.ListViewSubItem(item,
-
-                dir.LastAccessTime.ToShortDateString())};
+                        {new ListViewItem.ListViewSubItem(item, "Directory"), new ListViewItem.ListViewSubItem(item,dir.LastAccessTime.ToShortDateString())};
 
                     //Se agregan los subelementos contenidos en el arreglo subItems al elemento item.
                     item.SubItems.AddRange(subItems);
@@ -144,29 +140,24 @@ namespace pryLopezIE
                 lstProveedores.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
         }
-
-
-
-
-
         string leerLinea;
         string[] separarDatos;
         private bool grillaCreada = false;
         public static int pos = 0;
         //Esta línea obtiene el índice de la fila actualmente seleccionada en el DataGridView(dgvProveedores) y lo almacena en la variable pos.El índice se refiere a la posición de la fila en el DataGridView.
-        public void dgvProveedores_CellClick(object sender, DataGridViewCellMouseEventArgs e)
+        public void dgvProveedores1_CellClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //Asigna el valor de la celda en la columna 0 (primera columna) de la fila con el índice pos al campo de texto txtModificarNumero en el formulario modificarProveedor.Esto parece ser una operación para mostrar información relacionada con un proveedor en el formulario de modificación
-            pos = dgvProveedores.CurrentRow.Index;
+            pos = dgvProveedores1.CurrentRow.Index;
             //Estas líneas asignan valores de celdas específicas en el DataGridView a campos de texto en el formulario modificarProveedor.Cada línea se refiere a una columna diferente en el DataGridView, y los valores se extraen de la fila seleccionada con el índice pos.
-            txtModificarNumero.Text = dgvProveedores[0, pos].Value.ToString();
-            txtModificarEntidad.Text = dgvProveedores[1, pos].Value.ToString();
-            txtModificarApertura.Text = dgvProveedores[2, pos].Value.ToString();
-            txtModificarNExpediente.Text = dgvProveedores[3, pos].Value.ToString();
-            txtModificarJuzgado.Text = dgvProveedores[4, pos].Value.ToString();
-            txtModificarJurisdiccion.Text = dgvProveedores[5, pos].Value.ToString();
-            txtModificarDireccion.Text = dgvProveedores[6, pos].Value.ToString();
-            txtModificarLiquidadorResponsable.Text = dgvProveedores[7, pos].Value.ToString();
+            txtModificarNumero.Text = dgvProveedores1[0, pos].Value.ToString();
+            txtModificarEntidad.Text = dgvProveedores1[1, pos].Value.ToString();
+            txtModificarApertura.Text = dgvProveedores1[2, pos].Value.ToString();
+            txtModificarNExpediente.Text = dgvProveedores1[3, pos].Value.ToString();
+            txtModificarJuzgado.Text = dgvProveedores1[4, pos].Value.ToString();
+            txtModificarJurisdiccion.Text = dgvProveedores1[5, pos].Value.ToString();
+            txtModificarDireccion.Text = dgvProveedores1[6, pos].Value.ToString();
+            txtModificarLiquidadorResponsable.Text = dgvProveedores1[7, pos].Value.ToString();
         }
 
         private void lstProveedores_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
@@ -175,7 +166,7 @@ namespace pryLopezIE
             if (!grillaCreada)
             {
                 //Se crea un objeto StreamReader llamado sr para leer el archivo CSV llamado "Lista.csv".
-                StreamReader sr = new StreamReader(@"../../bin\Debug/Lista.csv");
+                StreamReader sr = new StreamReader(@"../../bin/Debug/Lista.csv");
                 //Declara una variable leerLinea para almacenar una línea del archivo CSV.
                 string leerLinea;
                 //Declara un arreglo de cadenas llamado separarDatos para dividir los datos de una línea en campos separados por el carácter; (punto y coma).
@@ -188,7 +179,7 @@ namespace pryLopezIE
                 for (int indice = 0; indice < separarDatos.Length; indice++)
                 {
                     //Agrega una columna al DataGridView(dgvProveedores) utilizando el valor en separarDatos[indice] como nombre de la columna.Esto crea las columnas en el DataGridView basadas en los encabezados del archivo CSV.
-                    dgvProveedores.Columns.Add(separarDatos[indice], separarDatos[indice]);
+                    dgvProveedores1.Columns.Add(separarDatos[indice], separarDatos[indice]);
                 }
                 //Inicia un bucle while que se ejecuta mientras no se llegue al final del archivo CSV.
                 while (sr.EndOfStream == false)
@@ -198,7 +189,7 @@ namespace pryLopezIE
                     //Divide la nueva línea en campos y almacena los campos en el arreglo separarDatos.
                     separarDatos = leerLinea.Split(';');
                     //Agrega una nueva fila al DataGridView(dgvProveedores) utilizando los datos en separarDatos.
-                    dgvProveedores.Rows.Add(separarDatos);
+                    dgvProveedores1.Rows.Add(separarDatos);
                 }
                 //Cierra el archivo CSV después de leer todos los datos.
                 sr.Close();
@@ -215,7 +206,7 @@ namespace pryLopezIE
                 //Borra todas las columnas del DataGridView para limpiar los encabezados de columna existentes.
                 dgvProveedores.Columns.Clear();
                 //Se repite el proceso para abrir nuevamente el archivo CSV, leer los encabezados y datos, y agregarlos al DataGridView.
-                StreamReader sr = new StreamReader("../../bin\\Debug/Lista.csv");
+                StreamReader sr = new StreamReader(@"../../bin/Debug/Lista.csv");
                 string leerLinea;
                 string[] separarDatos;
                 leerLinea = sr.ReadLine();
@@ -246,7 +237,7 @@ namespace pryLopezIE
         }
 
         //En esta línea se declara una variable estática pública llamada rutaArchivo y se le asigna la ruta del archivo "../../Resources/Lista.csv". Esta variable almacena la ruta del archivo CSV que se va a leer y modificar en el resto del código.
-        public static string rutaArchivo = "../../bin\\Debug/Lista.csv";
+        public static string rutaArchivo = @"../../bin/Debug/Lista.csv";
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -392,12 +383,12 @@ namespace pryLopezIE
                 }
             }
         }
-
         private void frmProveedores_Load(object sender, EventArgs e)
         {
 
 
             txtModificarNumero.Text = numGuia.ToString();
         }
+
     }
 }

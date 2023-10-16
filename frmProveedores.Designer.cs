@@ -37,6 +37,7 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.imageListTreeViewProveedores = new System.Windows.Forms.ImageList(this.components);
             this.tvwProveedores = new System.Windows.Forms.TreeView();
             this.gpbIndicacion = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -63,7 +64,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.imageListTreeViewProveedores = new System.Windows.Forms.ImageList(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedores)).BeginInit();
             this.gpbIndicacion.SuspendLayout();
@@ -151,6 +151,13 @@
             this.columnHeader3.Text = "Ult. Modificacion";
             this.columnHeader3.Width = 200;
             // 
+            // imageListTreeViewProveedores
+            // 
+            this.imageListTreeViewProveedores.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListTreeViewProveedores.ImageStream")));
+            this.imageListTreeViewProveedores.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListTreeViewProveedores.Images.SetKeyName(0, "carpeta_pryIE1-removebg-preview.png");
+            this.imageListTreeViewProveedores.Images.SetKeyName(1, "archivo_pryIE1-removebg-preview.png");
+            // 
             // tvwProveedores
             // 
             this.tvwProveedores.BackColor = System.Drawing.Color.White;
@@ -207,7 +214,7 @@
             // 
             this.gpbProveedor.Controls.Add(this.dgvProveedores1);
             this.gpbProveedor.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gpbProveedor.ForeColor = System.Drawing.Color.White;
+            this.gpbProveedor.ForeColor = System.Drawing.Color.Black;
             this.gpbProveedor.Location = new System.Drawing.Point(6, 214);
             this.gpbProveedor.Name = "gpbProveedor";
             this.gpbProveedor.Size = new System.Drawing.Size(1017, 254);
@@ -227,6 +234,8 @@
             this.dgvProveedores1.RowHeadersWidth = 51;
             this.dgvProveedores1.Size = new System.Drawing.Size(1003, 229);
             this.dgvProveedores1.TabIndex = 12;
+            this.dgvProveedores1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvProveedores_CellClick);
+            this.dgvProveedores1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvProveedores_CellClick);
             this.dgvProveedores1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProveedores1_CellClick);
             this.dgvProveedores1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProveedores1_CellClick);
             // 
@@ -423,6 +432,7 @@
             this.button1.TabIndex = 22;
             this.button1.Text = "Eliminar";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -453,16 +463,6 @@
             this.button3.Text = "Cargar";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // imageListTreeViewProveedores
-            // 
-            this.imageListTreeViewProveedores.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListTreeViewProveedores.ImageStream")));
-            this.imageListTreeViewProveedores.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListTreeViewProveedores.Images.SetKeyName(0, "carpeta_pryIE1-removebg-preview.png");
-            this.imageListTreeViewProveedores.Images.SetKeyName(1, "archivo_pryIE1-removebg-preview.png");
-            // 
-            // folderBrowserDialog1
-            // (this.folderBrowserDialog1_HelpRequest);
             // 
             // frmProveedores
             // 

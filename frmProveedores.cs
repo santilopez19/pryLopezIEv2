@@ -390,5 +390,56 @@ namespace pryLopezIE
             txtModificarNumero.Text = numGuia.ToString();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            int n = dgvProveedores.CurrentCell.RowIndex;
+
+            if (n != -1)
+            {
+                //ID es el número de la celda 0 de la fila seleccionada 
+                string ID = Convert.ToString(dgvProveedores.Rows[n].Cells[0].Value);
+
+                //Es una lista que funciona igual que un vector pero tiene métodos propios
+                List<string> lineasArchivo = new List<string>();
+
+                using (StreamReader reader = new StreamReader(rutaArchivo))
+                {
+
+                    // Lee el resto de las líneas
+                    string linea;
+                    while ((linea = reader.ReadLine()) != null)
+                    {
+                        // Procesa la línea actual aquí y separo los campos con ";"
+                        string[] parametros = linea.Split(';');
+                        //Copia todas las lineas que no coincide con el ID para sobreescribir el archivo sin la linea que quiero borrar
+                        if (parametros[0] != ID)
+                        {
+                            lineasArchivo.Add(linea);
+                        }
+                    }
+                }
+
+                using (StreamWriter writer = new StreamWriter(rutaArchivo))
+                {
+                    foreach (string elemento in lineasArchivo)
+                    {
+                        // Escribe cada elemento en una línea del archivo, el elemento contiene la línea guardada en el índice momentáneo de la lista
+                        writer.WriteLine(elemento);
+                    }
+                }
+
+                MessageBox.Show("El registro se elimino");
+
+                dgvProveedores.Rows.RemoveAt(n);
+            }
+
+        
+        }
+        private void DgvProveedores_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Posiciono la fila que deseo borrar
+            //posicion = DgvProveedores.CurrentRow.Index;
+        }
     }
 }

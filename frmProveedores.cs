@@ -26,7 +26,7 @@ namespace pryLopezIE
 
 
             //Crea un objeto DirectoryInfo que apunta a la carpeta.
-            DirectoryInfo info = new DirectoryInfo(@"../../bin/Debug");
+            DirectoryInfo info = new DirectoryInfo(@"../../Resources");
 
             //Verifica si la carpeta especificada en info realmente existe en el sistema de archivos.
             if (info.Exists)
@@ -166,7 +166,7 @@ namespace pryLopezIE
             if (!grillaCreada)
             {
                 //Se crea un objeto StreamReader llamado sr para leer el archivo CSV llamado "Lista.csv".
-                StreamReader sr = new StreamReader(@"../../bin/Debug/Lista.csv");
+                StreamReader sr = new StreamReader(@"../../Resources/Lista.csv");
                 //Declara una variable leerLinea para almacenar una línea del archivo CSV.
                 string leerLinea;
                 //Declara un arreglo de cadenas llamado separarDatos para dividir los datos de una línea en campos separados por el carácter; (punto y coma).
@@ -206,7 +206,7 @@ namespace pryLopezIE
                 //Borra todas las columnas del DataGridView para limpiar los encabezados de columna existentes.
                 dgvProveedores.Columns.Clear();
                 //Se repite el proceso para abrir nuevamente el archivo CSV, leer los encabezados y datos, y agregarlos al DataGridView.
-                StreamReader sr = new StreamReader(@"../../bin/Debug/Lista.csv");
+                StreamReader sr = new StreamReader(@"../../Resources/Lista.csv");
                 string leerLinea;
                 string[] separarDatos;
                 leerLinea = sr.ReadLine();
@@ -237,11 +237,11 @@ namespace pryLopezIE
         }
 
         //En esta línea se declara una variable estática pública llamada rutaArchivo y se le asigna la ruta del archivo "../../Resources/Lista.csv". Esta variable almacena la ruta del archivo CSV que se va a leer y modificar en el resto del código.
-        public static string rutaArchivo = @"../../bin/Debug/Lista.csv";
+        public static string rutaArchivo = @"../../Resources/Lista.csv";
         private void button2_Click(object sender, EventArgs e)
         {
 
-            //Se crea una variable llamada posicion que toma el valor de la propiedad pos del formulario frmProveedores y la convierte a una cadena (ToString). La variable pos probablemente almacena algún tipo de posición o identificador.
+            //Se crea una variable llamada posicion que toma el valor de la propiedad pos del formulario frmProveedores y la convierte a una cadena (ToString). La variable pos almacena el identificador.
             string posicion = frmProveedores.pos.ToString();
 
             //Se crea una lista de cadenas llamada lista. Esta lista se utilizará para almacenar las líneas del archivo CSV después de modificarlas.
@@ -272,7 +272,7 @@ namespace pryLopezIE
                     else
                     {
                         //Después de terminar de leer y procesar todas las líneas del archivo CSV, se cierra el objeto StreamReader.
-                        string lineaDos = txtModificarNumero.Text + ";" + txtModificarEntidad.Text + ";" + txtModificarApertura.Text + ";" + txtModificarNExpediente.Text + ";" + txtModificarJuzgado.Text + ";" + txtModificarJurisdiccion.Text + ";" + txtModificarDireccion.Text + ";" + txtModificarLiquidadorResponsable.Text + ";";
+                        string lineaDos = "" + ";" + "" + ";" + "" + ";" + "" + ";" + "" + ";" + "" + ";" + "" + ";" + "" + ";";
                         lista.Add(lineaDos);
                     }
                 }
@@ -392,54 +392,42 @@ namespace pryLopezIE
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //Se crea una variable llamada posicion que toma el valor de la propiedad pos del formulario frmProveedores y la convierte a una cadena (ToString). La variable pos almacena el identificador.
+            string posicion = frmProveedores.pos.ToString();
 
-            int n = dgvProveedores.CurrentCell.RowIndex;
+            //Se crea una lista de cadenas llamada lista. Esta lista se utilizará para almacenar las líneas del archivo CSV después de modificarlas.
 
-            if (n != -1)
+            List<string> lista = new List<string>();
+
+            //Aquí se crea un objeto StreamReader llamado leer para leer el contenido del archivo CSV especificado en rutaArchivo. La instrucción using garantiza que el objeto leer se cierre correctamente después de su uso.
+            using (StreamReader leer = new StreamReader(rutaArchivo))
             {
-                //ID es el número de la celda 0 de la fila seleccionada 
-                string ID = Convert.ToString(dgvProveedores.Rows[n].Cells[0].Value);
 
-                //Es una lista que funciona igual que un vector pero tiene métodos propios
-                List<string> lineasArchivo = new List<string>();
+                //Se declara una variable linea para almacenar cada línea leída del archivo CSV.
+                string linea;
 
-                using (StreamReader reader = new StreamReader(rutaArchivo))
+                //Esto inicia un bucle while que leerá cada línea del archivo hasta que no haya más líneas que leer.
+                while ((linea = leer.ReadLine()) != null)
                 {
 
-                    // Lee el resto de las líneas
-                    string linea;
-                    while ((linea = reader.ReadLine()) != null)
+                    //Cada línea se divide en un array de cadenas llamado parametros utilizando el carácter ; como separador. Esto asume que las líneas del archivo CSV están separadas por punto y coma.
+                    string[] parametros = linea.Split(';');
+
+                    //Se verifica si el primer elemento en parametros (probablemente algún tipo de identificador) es diferente de la variable posicion.
+                    if (parametros[0] != posicion)
                     {
-                        // Procesa la línea actual aquí y separo los campos con ";"
-                        string[] parametros = linea.Split(';');
-                        //Copia todas las lineas que no coincide con el ID para sobreescribir el archivo sin la linea que quiero borrar
-                        if (parametros[0] != ID)
-                        {
-                            lineasArchivo.Add(linea);
-                        }
+                        //Si el identificador no coincide, la línea original se agrega a la lista lista.
+                        lista.Add(linea);
+                    }
+                    //Si el identificador coincide, se crea una nueva línea concatenando algunos valores de campos de entrada de textoy y se agrega al lista.
+                    else
+                    {
+                        //Después de terminar de leer y procesar todas las líneas del archivo CSV, se cierra el objeto StreamReader.
+                        string lineaDos = "" + ";" + "" + ";" + "" + ";" + "" + ";" + "" + ";" + "" + ";" + "" + ";" + "" + ";";
+                        lista.Add(lineaDos);
                     }
                 }
-
-                using (StreamWriter writer = new StreamWriter(rutaArchivo))
-                {
-                    foreach (string elemento in lineasArchivo)
-                    {
-                        // Escribe cada elemento en una línea del archivo, el elemento contiene la línea guardada en el índice momentáneo de la lista
-                        writer.WriteLine(elemento);
-                    }
-                }
-
-                MessageBox.Show("El registro se elimino");
-
-                dgvProveedores.Rows.RemoveAt(n);
             }
-
-        
-        }
-        private void DgvProveedores_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //Posiciono la fila que deseo borrar
-            //posicion = DgvProveedores.CurrentRow.Index;
         }
     }
 }

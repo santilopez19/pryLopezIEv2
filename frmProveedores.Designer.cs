@@ -430,7 +430,6 @@
             this.btnEliminar.TabIndex = 22;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
-            this.btnEliminar.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnModificar
             // 
@@ -445,7 +444,6 @@
             this.btnModificar.TabIndex = 23;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
-            this.btnModificar.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnCargar
             // 
@@ -460,7 +458,6 @@
             this.btnCargar.TabIndex = 24;
             this.btnCargar.Text = "Cargar";
             this.btnCargar.UseVisualStyleBackColor = false;
-            this.btnCargar.Click += new System.EventHandler(this.button3_Click);
             // 
             // frmProveedores
             // 

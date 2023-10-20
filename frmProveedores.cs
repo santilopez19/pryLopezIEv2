@@ -238,7 +238,7 @@ namespace pryLopezIE
 
         //En esta línea se declara una variable estática pública llamada rutaArchivo y se le asigna la ruta del archivo "../../Resources/Lista.csv". Esta variable almacena la ruta del archivo CSV que se va a leer y modificar en el resto del código.
         public static string rutaArchivo = @"../../Resources/Lista.csv";
-        private void button2_Click(object sender, EventArgs e)
+        private void btnModificar_Click(object sender, EventArgs e)
         {
 
             //Se crea una variable llamada posicion que toma el valor de la propiedad pos del formulario frmProveedores y la convierte a una cadena (ToString). La variable pos almacena el identificador.
@@ -304,12 +304,8 @@ namespace pryLopezIE
         int numGuia = 158;
         clseArchivo grabado = new clseArchivo();
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnCargar_Click(object sender, EventArgs e)
         {
-
-
-
-
             if (txtModificarEntidad.Text == "")
             {
                 MessageBox.Show("Campo Entidad vacio");
@@ -359,7 +355,7 @@ namespace pryLopezIE
                                     }
                                     else
                                     {
-                                        string[] datosProveedores = new string[] { numGuia.ToString(), txtModificarEntidad.Text, txtModificarApertura.Text, txtModificarNExpediente.Text, txtModificarJuzgado.Text, txtModificarJurisdiccion.Text, txtModificarDireccion.Text, txtModificarLiquidadorResponsable.Text };
+                                        string[] datosProveedores = new string[] { numGuia+1.ToString(), txtModificarEntidad.Text, txtModificarApertura.Text, txtModificarNExpediente.Text, txtModificarJuzgado.Text, txtModificarJurisdiccion.Text, txtModificarDireccion.Text, txtModificarLiquidadorResponsable.Text };
 
                                         string datosConcatenados = string.Join(";", datosProveedores);
 
@@ -385,12 +381,10 @@ namespace pryLopezIE
         }
         private void frmProveedores_Load(object sender, EventArgs e)
         {
-
-
             txtModificarNumero.Text = numGuia.ToString();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnEliminar_Click(object sender, EventArgs e)
         {
             //Se crea una variable llamada posicion que toma el valor de la propiedad pos del formulario frmProveedores y la convierte a una cadena (ToString). La variable pos almacena el identificador.
             string posicion = frmProveedores.pos.ToString();
@@ -429,5 +423,6 @@ namespace pryLopezIE
                 }
             }
         }
+
     }
 }
